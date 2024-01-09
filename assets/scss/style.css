@@ -1,0 +1,56 @@
+body {
+  width: 100vw;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 80vw;
+  margin: 0 auto;
+}
+.container-fluid {
+  max-width: 100vw;
+}
+@media only screen and (max-width: 1920px) {
+  .container {
+    max-width: 1230px;
+  }
+}
+
+.navbar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.navbar__logo {
+  display: flex;
+  gap: 3px;
+}
+@media only screen and (max-width: 1920px) {
+  .navbar__logo {
+    margin-right: 60px;
+  }
+}
+.navbar__navigation {
+  margin-right: 180px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.navbar__link {
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-decoration: none;
+  color: #424551;
+}
+.navbar__communication {
+  display: flex;
+  gap: 36px;
+}
+.navbar__communication-col {
+  display: flex;
+  align-items: center;
+}/*# sourceMappingURL=style.css.map */
