@@ -11,6 +11,11 @@ body {
   max-width: 100vw;
 }
 @media only screen and (max-width: 1920px) {
+  .container-fluid {
+    max-width: 1920px;
+  }
+}
+@media only screen and (max-width: 1920px) {
   .container {
     max-width: 1230px;
   }
@@ -18,6 +23,7 @@ body {
 
 .navbar {
   margin-top: 20px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: center;
 }
@@ -36,6 +42,11 @@ body {
   align-items: center;
   gap: 40px;
 }
+@media only screen and (max-width: 1920px) {
+  .navbar__navigation {
+    margin-right: 172px;
+  }
+}
 .navbar__link {
   font-family: Ubuntu;
   font-size: 16px;
@@ -46,6 +57,16 @@ body {
   text-decoration: none;
   color: #424551;
 }
+@media (hover: hover) {
+  .navbar__link:hover {
+    color: #FF5A30;
+  }
+}
+@media (hover: none) {
+  .navbar__link:hover {
+    color: #FF5A30;
+  }
+}
 .navbar__communication {
   display: flex;
   gap: 36px;
@@ -53,4 +74,77 @@ body {
 .navbar__communication-col {
   display: flex;
   align-items: center;
+  gap: 12px;
+}
+.navbar__col a {
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #424551;
+}
+@media (hover: hover) {
+  .navbar__col a:hover {
+    color: #FF5A30;
+  }
+}
+@media (hover: none) {
+  .navbar__col a:hover {
+    color: #FF5A30;
+  }
+}
+.navbar__col p {
+  font-family: Ubuntu;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #424551;
+}
+
+.construction {
+  padding: 0px 32px;
+  display: flex;
+  align-items: center;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-image: url(../img/bg-image.jpg);
+}
+.construction__scrollBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  opacity: 0.5;
+  background-color: #FFFFFF;
+}
+.construction__content {
+  display: grid;
+  gap: 61px;
+}
+.construction__title {
+  font-family: Ubuntu;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 94px;
+  letter-spacing: 1px;
+  text-align: left;
+  color: #FFFFFF;
+}
+.construction__title span {
+  color: #FF5A30;
+}
+.construction__text {
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FFFFFF;
 }/*# sourceMappingURL=style.css.map */
