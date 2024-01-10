@@ -107,6 +107,10 @@ body {
     background-origin: border-box;
     background-repeat: no-repeat;
     background-image: url(../img/bg-image.jpg);
+    &__container {
+        display: grid;
+        gap: 179px;
+    }
     &__scrollBtn {
         display: flex;
         justify-content: center;
@@ -120,6 +124,10 @@ body {
     &__content {
         display:grid;
         gap: 61px;
+    }
+    &__info {
+        display: grid;
+        gap: 24px;
     }
     &__title {
         font-family: Ubuntu;

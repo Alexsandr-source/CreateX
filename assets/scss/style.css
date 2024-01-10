@@ -113,6 +113,10 @@ body {
   background-repeat: no-repeat;
   background-image: url(../img/bg-image.jpg);
 }
+.construction__container {
+  display: grid;
+  gap: 179px;
+}
 .construction__scrollBtn {
   display: flex;
   justify-content: center;
@@ -126,6 +130,10 @@ body {
 .construction__content {
   display: grid;
   gap: 61px;
+}
+.construction__info {
+  display: grid;
+  gap: 24px;
 }
 .construction__title {
   font-family: Ubuntu;
