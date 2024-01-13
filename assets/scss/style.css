@@ -81,6 +81,9 @@
   text-align: left;
   color: #424551;
 }
+.navbar__icon {
+  padding-left: 3px;
+}
 
 .construction {
   padding: 0px 32px;
@@ -156,6 +159,11 @@
   gap: 24px;
 }
 .construction__button-active {
+  border: 1px solid #FFFFFF;
+  background-color: transparent;
+  color: #FFFFFF;
+}
+.construction__button:hover {
   border: 1px solid #FFFFFF;
   background-color: transparent;
   color: #FFFFFF;

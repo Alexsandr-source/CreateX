@@ -80,6 +80,9 @@
             color: #424551;
         }
     }
+    &__icon {
+        padding-left: 3px;
+    }
 }
 .construction {
     padding: 0px 32px;
@@ -154,6 +157,11 @@
             gap: 24px;
         }
         &-active {
+            border: 1px solid #FFFFFF;
+            background-color: transparent;
+            color: #FFFFFF;
+        }
+        &:hover {
             border: 1px solid #FFFFFF;
             background-color: transparent;
             color: #FFFFFF;
