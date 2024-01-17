@@ -92,9 +92,10 @@
     background-origin: border-box;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(../img/bg-image.jpg);
+    background-image: url(../img/bg-image0.jpg);
     &__container {
         width: var(--content-width);
+        margin:220px 0 120px 0 ;
         display: grid;
         gap: 179px;
     }
@@ -114,7 +115,6 @@
         gap: 61px;
     }
     &__info {
-        margin-top: 220px;
         display: grid;
         gap: 24px;
     }
@@ -149,12 +149,13 @@
         text-transform: uppercase;
         color: #FFFFFF;
 
-        padding: 0px 40px;
+        padding: 0px 38px;
         border-radius: 4px;
+
         background-color: #FF5A30;
         &s {
             display: flex;
-            gap: 24px;
+            gap: 27px;
         }
         &-active {
             border: 1px solid #FFFFFF;
@@ -165,6 +166,27 @@
             border: 1px solid #FFFFFF;
             background-color: transparent;
             color: #FFFFFF;
+        }
+    }
+    &__number {
+        width: 178px;
+        
+        font-family: Ubuntu;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 42px;
+        letter-spacing: 0em;
+        text-align: left;
+        
+        opacity: .3;
+        border-bottom: 2px solid #ccc ;
+        padding-bottom: 11px;
+        &s {
+            display: flex;
+            gap: 4px;
+        }
+        &__active {
+            opacity: 1;
         }
     }
 }
