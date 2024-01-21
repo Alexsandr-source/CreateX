@@ -93,7 +93,7 @@
   background-origin: border-box;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../img/bg-image0.jpg);
+  background-image: url(../img/bg-image0.png);
 }
 .construction__container {
   width: var(--content-width);
@@ -186,4 +186,16 @@
 }
 .construction__number__active {
   opacity: 1;
+}
+@media (hover: hover) {
+  .construction__number:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+@media (hover: none) {
+  .construction__number:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
 }/*# sourceMappingURL=style.css.map */

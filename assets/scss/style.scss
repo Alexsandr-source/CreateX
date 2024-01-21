@@ -92,7 +92,7 @@
     background-origin: border-box;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(../img/bg-image0.jpg);
+    background-image: url(../img/bg-image0.png);
     &__container {
         width: var(--content-width);
         margin:220px 0 120px 0 ;
@@ -187,6 +187,18 @@
         }
         &__active {
             opacity: 1;
+        }
+        @media (hover: hover) {
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+            }
+        }
+        @media (hover: none) {
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+            }
         }
     }
 }
