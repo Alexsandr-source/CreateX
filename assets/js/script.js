@@ -2,7 +2,7 @@ const constructionPrev = document.querySelector('#constructionPrev');
 const constructionNext = document.querySelector('#constructionNext');
 const constructionBackground = document.querySelector('.construction');
 const constructionNumber = document.querySelector('#constructionNumber');
-const constructionNumbers = Array.from(constructionNumber.querySelectorAll('.reviews__btn'));
+const constructionNumbers = Array.from(constructionNumber.querySelectorAll('.construction__number'));
 const constructionBackgrounds = [
     "assets/img/bg-image0.png",
     "assets/img/bg-image1.png",
@@ -12,21 +12,17 @@ const constructionBackgrounds = [
 
 let constructionCount = constructionBackgrounds.length;
 let constructionIndex = 0;
-let numberCount = constructionNumbers.length;
-let numberIndex = 0;
 
 constructionPrev.addEventListener('click', constructionPrevBackground);
 constructionNext.addEventListener('click', nextconstructionBackgrounds);
 function constructionPrevBackground() {
     constructionIndex = (--constructionIndex + constructionCount) % constructionCount;
-    numberIndex = (--numberIndex + numberCount) % numberCount;
-    updateNumber(numberIndex)
+    updateNumber()
     updateBackground();
 };
 function nextconstructionBackgrounds() {
     constructionIndex = (++constructionIndex) % constructionCount;
-    numberIndex = (++numberIndex) % numberCount;
-    updateNumber(numberIndex)
+    updateNumber()
     updateBackground();
 };
 function updateBackground() {
@@ -39,20 +35,19 @@ function updateBackground() {
         }
     };
 };
-function updateNumber() {
-    constructionNumbers.forEach((number, index) => {
-        if (index === numberIndex) {
-            number.classList.add('construction__number__active')
-        } else {
-            number.classList.remove('construction__number__active')
-        }
-    });
-    constructionNumbers.forEach((number, index) => {
-        number.addEventListener('click', () => {
-            numberIndex = index;
-            updateBackground();
-        })
-    })
+const updateNumber = (index) => {
+    for (let number of constructionNumbers) {
+        number.classList.remove('construction__number__active')
+    }
+    console.log(constructionNumbers);
+    constructionNumbers[constructionIndex].classList.add('construction__number__active')
 }
+constructionNumbers.forEach((number, index) => {
+    number.addEventListener('click', () => {
+        constructionIndex = index;
+        updateNumber(constructionIndex)
+        updateBackground();
+    })
+})
 updateNumber();
 updateBackground();
