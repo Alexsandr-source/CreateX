@@ -25,7 +25,7 @@
                 <a href="#" class="navbar__link">Contacts</a>
             </div>
             <div class="navbar__communication">
-                <div class="navbar__communication-col">
+                <div class="navbar__communication_col">
                     <div class="navbar__col">
                         <img class="navbar__icon" src="./assets/img/iPhone.svg"></img>
                     </div>
@@ -34,7 +34,7 @@
                         <a href="#">(405) 555-0128</a>
                     </div>
                 </div>
-                <div class="navbar__communication-col">
+                <div class="navbar__communication_col">
                     <div class="navbar__col">
                         <img class="navbar__icon" src="./assets/img/Chat.svg"></img>
                     </div>
@@ -64,15 +64,15 @@
                             </p>
                         </div>
                         <div class="construction__buttons">
-                            <button class="construction__button construction__button-active">Learn more about us</button>
-                            <button class="construction__button">SUBMIT REQUEST</button>
+                            <button class="construction__button construction__button-active" id="learnMore">Learn more about us</button>
+                            <button class="construction__button" id="submitRequest">SUBMIT REQUEST</button>
                         </div>
                     </div>
                     <div class="construction__numbers" id="constructionNumber">
-                        <h2 class="construction__number construction__number__active">01</h2>
-                        <h2 class="construction__number">02</h2>
-                        <h2 class="construction__number">03</h2>
-                        <h2 class="construction__number">04</h2>
+                        <p class="construction__number construction__number__active">01</p>
+                        <p class="construction__number">02</p>
+                        <p class="construction__number">03</p>
+                        <p class="construction__number">04</p>
                     </div>
                 </div>
                 <button class="construction__scrollBtn"  id="constructionNext">
@@ -80,7 +80,37 @@
                 </button>
             </div>
         </section>
+        <section class="container-fluid">
+            <div class="bureau">
+                <div class="bureau__container">
+                    <div class="bureau__subject">
+                        <h2 class="bureau__title">We are Createx Construction Bureau </h2>
+                        <p class="bureau__subtitle">We are rightfully considered to be the best construction company in the USA.</p>
+                    </div>
+                    <div class='video'>
+                        <video class='video__player' id='video-player' src="./assets/video/5036210_colleague_foreman_helmet_3840x2160.mp4" preload='metadata'></video>
+                        <div class="com">
+                            <img src="./assets/img/Arrow.svg" alt="">
+                        </div>
+                        <div class='video__hud'>
+                            <div class='video__hud__element video__hud__action video__hud__action_play' id='video-hud__action'>
+                                <img class="video__hud__action_play" src="./assets/img/Arrow.svg" alt="">
+                                <img class="video__hud__action_pause" src="./assets/img/pause.png" alt="">
+                            </div> 
+                            <div class='video__hud__element video__hud__curr_time' id='video-hud__curr-time'>00:00</div>
+                            <div class='video__hud__element video__hud__progress'>
+                                <div value='0' max='100' class='video__hud__element video__hud__progress_line' id='video-hud__progress-line'></div>
+                            </div>
+                            <div class='video__hud__element video__hud__duration' id='video-hud__duration'>00:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <script src="assets/js/script.js"></script>
+    <noscript>
+        Включите Java Script!!!
+    </noscript>
 </body>
 </html>

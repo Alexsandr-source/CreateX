@@ -13,6 +13,7 @@
 	border: none;
 	text-decoration: none;
 	color: var(--text-color);
+	transition: .3s;
 }
 
 *,

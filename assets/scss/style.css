@@ -48,7 +48,7 @@
   display: flex;
   gap: 36px;
 }
-.navbar__communication-col {
+.navbar__communication_col {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -152,6 +152,7 @@
   color: #FFFFFF;
   padding: 0px 38px;
   border-radius: 4px;
+  border: 1px solid #FF5A30;
   background-color: #FF5A30;
 }
 .construction__buttons {
@@ -164,9 +165,8 @@
   color: #FFFFFF;
 }
 .construction__button:hover {
-  border: 1px solid #FFFFFF;
-  background-color: transparent;
-  color: #FFFFFF;
+  background: rgb(158, 150, 150);
+  border: rgb(158, 150, 150);
 }
 .construction__number {
   width: 178px;
@@ -198,4 +198,111 @@
     opacity: 1;
     cursor: pointer;
   }
+}
+
+.bureau {
+  margin-top: 12vmax;
+}
+.bureau__title {
+  font-family: Ubuntu;
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #1E212C;
+}
+.bureau__subtitle {
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #787A80;
+}
+
+.com {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  top: 20vmax;
+  left: 35vmax;
+  width: 50px;
+  height: 50px;
+  background-color: #FF5A30;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.com img {
+  width: 25px;
+  height: 25px;
+}
+
+.video {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 6vmax;
+}
+.video__player {
+  width: 100%;
+  margin: 0;
+}
+.video__hud {
+  display: none;
+  margin: 0;
+  padding: 1px;
+}
+.video__hud__element {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  height: 30px;
+}
+.video__hud__action {
+  width: 30px;
+}
+.video__hud__action_play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2vmax;
+  height: 2.2vmax;
+  background-color: #FF5A30;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.video__hud__action_play img {
+  width: 1vmax;
+  height: 1vmax;
+}
+.video__hud__action_pause {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.2vmax;
+  height: 2.2vmax;
+  background-color: #FF5A30;
+  border-radius: 100%;
+}
+.video__hud__action_pause img {
+  width: 1vmax;
+  height: 1vmax;
+}
+.video__hud__curr_time {
+  color: #1E212C;
+}
+.video__hud__duration {
+  color: #1E212C;
+}
+.video__hud__progress {
+  width: 90%;
+  background-color: #1E212C;
+}
+.video__hud__progress_line {
+  width: 100%;
+  background-color: var(--accent-color);
 }/*# sourceMappingURL=style.css.map */
