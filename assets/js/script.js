@@ -13,8 +13,7 @@ const progressLine = document.getElementById('video-hud__progress-line');
 const currTime = document.getElementById('video-hud__curr-time');
 const durationTime = document.getElementById('video-hud__duration');
 const actionButton = document.getElementById('video-hud__action');
-const videoPlay = document.querySelector('');
-const videoPause = document.querySelector('');
+const actionImage = document.querySelector('.video__hud__action_img');
 const lineVideo = document.querySelector('.video__hud__progress_line')
 const constructionNumbers = Array.from(constructionNumber.querySelectorAll('.construction__number'));
 const constructionBackgrounds = [
@@ -100,9 +99,12 @@ function videoAct() {
         videoHub.style.display = 'block';
         com.style.display = 'none';
         videoPlayer.play();
+        actionImage.setAttribute('src', './assets/img/Arrow.svg');
         actionButton.setAttribute('class','video__hud__element video__hud__action video__hud__action_play');
     } else {
         videoPlayer.pause();
+
+        actionImage.src = './assets/img/pause.png';
         actionButton.setAttribute('class','video__hud__element video__hud__action video__hud__action_pause');
     }
     if(durationTime.innerHTML == '00:00') {
@@ -128,7 +130,8 @@ function videoTime(time) {
 }
 function videoProgress() {
     progress = (Math.floor(videoPlayer.currentTime) / (Math.floor(videoPlayer.duration) / 100));
-    progressLine.value = progress;
+    progressLine.style.width = progress + "%";
+    
     currTime.innerHTML = videoTime(videoPlayer.currentTime);
 }
 function videoChangeTime(e) {
