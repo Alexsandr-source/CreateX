@@ -2,7 +2,8 @@
 	--content-width:1230px;
 	--fluid-width:1920px;
 	--font-family: 'Ubuntu';
-	--text-color: #FFFFFF;
+	--text-color: #000000;
+	--white-color: #ffffff;
 	--accent-color: #FF5A30;
 }
 
@@ -24,7 +25,7 @@
 
 body {
 	font-family: var(--font-family) , sans-serif;
-	background-color: var(--text-color);
+	background-color: var(--white-color);
 }
 
 :focus,
@@ -132,4 +133,25 @@ legend {
 .container-fluid {
 	max-width: 1920px;
 	margin: 0 auto;
+}
+
+.title {
+	font-family: Ubuntu;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 60px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #1E212C;
+}
+
+.title-sub {
+	margin-top: 24px;
+    font-family: Ubuntu;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #787A80;
 }

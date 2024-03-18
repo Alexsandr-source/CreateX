@@ -31,12 +31,12 @@
         color: #424551;
         @media (hover: hover) {
             &:hover {
-                color: #FF5A30;
+                color: var(--accent-color);
             }
         }
         @media (hover: none) {
             &:hover {
-                color: #FF5A30;
+                color: var(--accent-color);
             }
         }
     }
@@ -60,13 +60,13 @@
             color: #424551;
             @media (hover: hover) {
                 &:hover {
-                    color: #FF5A30;
+                    color: var(--accent-color);
                 }
     
             }
             @media (hover: none) {
                 &:hover {
-                    color: #FF5A30;
+                    color: var(--accent-color);
                 }
             }
         }
@@ -127,7 +127,7 @@
         text-align: left;
         color: #FFFFFF;
         & span {
-            color: #FF5A30;
+            color: var(--accent-color);
         }
     }
     &__text {
@@ -152,8 +152,8 @@
         padding: 0px 38px;
         border-radius: 4px;
 
-        border: 1px solid #FF5A30;
-        background-color: #FF5A30;
+        border: 1px solid var(--accent-color);
+        background-color: var(--accent-color);
         &s {
             display: flex;
             gap: 27px;
@@ -179,6 +179,7 @@
         text-align: left;
         
         opacity: .3;
+        color: var(--white-color);
         border-bottom: 2px solid #ccc ;
         padding-bottom: 11px;
         &s {
@@ -210,25 +211,6 @@
     &__subject {
         display: block;
     }
-    &__title {
-        font-family: Ubuntu;
-        font-size: 46px;
-        font-weight: 700;
-        line-height: 60px;
-        letter-spacing: 0em;
-        text-align: center;
-        color: #1E212C;
-    }
-    &__subtitle {
-        font-family: Ubuntu;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 27px;
-        letter-spacing: 0em;
-        text-align: center;
-
-        color: #787A80;
-    }
 }
 .com {
     position: absolute;
@@ -238,22 +220,22 @@
     padding-left: 5px;
     top: 20vmax;
     left: 35vmax;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
 
-    background-color: #FF5A30;
+    background-color: var(--accent-color);
     border-radius: 100%;
     cursor: pointer;
     & img {
-        width: 25px;
-        height: 25px;
+        width: 23px;
+        height: 23px;
     }
 }
 .video {
     position: relative;
     width:80%;
     margin: 0 auto;
-    margin-top: 6vmax;
+    margin-top: 60px;
 
     &__player {
         width:100%;
@@ -281,7 +263,7 @@
                 justify-content: center;
                 width: 2.2vmax;
                 height: 2.2vmax;
-                background-color: #FF5A30;
+                background-color: var(--accent-color);
                 border-radius: 100%;
                 cursor: pointer;
                 & img {
@@ -295,7 +277,7 @@
                 justify-content: center;
                 width: 2.2vmax;
                 height: 2.2vmax;
-                background-color: #FF5A30;
+                background-color: var(--accent-color);
                 border-radius: 100%;
             }
             &_img {
@@ -324,18 +306,141 @@
 }
 .ourCore {
     &__container {
-
+        margin-top: 180px;
     }
     &__header {
-
-    }
-    &__title {
-
-        &-sub {
-
-        }
+        display: block;
     }
     &__main {
+        margin-top: 60px;
+    }
+    &__pillars {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__column {
+        width: 285px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        &_title {
+            margin-top: 24px;
+            font-family: Ubuntu;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 30px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: #1E212C;
+        }
+        &_text {
+            margin-top: 8px;
+            font-family: Ubuntu;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 26px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: #787A80;
+        }
+    }
+}
+.question {
+    &__container {
+        position: relative;
+        margin-top: 168px;
+        background-color: var(--white-color);
+        z-index: 1;
+    }
+    &__content {
+        position: absolute;
+        top: 0;
+        left: 5%;
+        right: 5%;
+        padding: 40px 60px;
+        border-radius: 4px;
+        background-color: var(--white-color);
+        z-index: 2;
+    }
+    &__title {
+        font-family: Ubuntu;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 42px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+    &__main {
+        margin-top: 10px;
+    }
+    &__pillars {
 
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-end;
+    }
+    &__column {
+        width: 260px;
+        margin: 0px 0px 0px 38px;
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        flex-direction: column;
+        &:nth-child(2) {
+            margin: 0px 0px 0px 24px;
+        }
+        &:nth-child(3) {
+            width: 420px;
+            margin: 0px 0px 0px 24px;
+        }
+        &_title {
+            margin-top: 24px;
+            font-family: Ubuntu;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+        &_input {
+            width: 260px;
+            font-family: Ubuntu;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+
+            margin-top: 8px;
+            padding: 10px 17px 9px 16px;
+
+            border-radius: 4px;
+            border: 1px solid #D7DADD;
+            background-color: #F4F5F6;
+            &-text {
+                width: 419px;
+            }
+        }
+    }
+    &__button{
+        width: 100px;
+        padding: 14px 32px;
+        border-radius: 4px;
+        color: var(--white-color);
+        background-color: var(--accent-color);
+        &:hover {
+            background: rgb(158, 150, 150);
+            border: rgb(158, 150, 150);
+        }
+    }
+}
+.ourServices {
+    &__container {
+        margin-top: 312px;
+        background-image: url(../img/backgroundeService.jpg);
+    }
+    &__header {
+        padding-top: 312px;
     }
 }
