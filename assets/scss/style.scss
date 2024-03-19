@@ -443,4 +443,51 @@
     &__header {
         padding-top: 312px;
     }
+    &__pillars {
+        margin-top: 60px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    &__column {
+        width: 285px;
+        height: 285px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5% 40px;
+        border-radius: 4px;
+        background-color: var(--white-color);
+        transition: .6s;
+        &:hover {
+            & .ourServices__column-text {
+                color: var(--white-color);
+            }
+            & .ourServices__column-img path {
+                fill: var(--white-color);
+            }
+            background: url(../img/imageHover.jpg);
+        }
+        &-text {
+            margin-top: 24px;
+            font-family: Ubuntu;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 30px;
+            text-align: center;
+        }
+    }
+    &__footer {
+        &-title {
+            font-family: Ubuntu;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 42px;
+            text-align: left;
+            color: #1E212C;
+        }
+        &-button {
+            color: var(--white-color);
+            background-color: var(--accent-color);
+        }
+    }
 }
