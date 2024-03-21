@@ -164,10 +164,6 @@
   background-color: transparent;
   color: #FFFFFF;
 }
-.construction__button:hover {
-  background: rgb(158, 150, 150);
-  border: rgb(158, 150, 150);
-}
 .construction__number {
   width: 178px;
   font-family: Ubuntu;
@@ -422,13 +418,13 @@
   color: var(--white-color);
   background-color: var(--accent-color);
 }
-.question__button:hover {
-  background: rgb(158, 150, 150);
-  border: rgb(158, 150, 150);
-}
 
 .ourServices__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 312px;
+  padding-bottom: 85px;
   background-image: url(../img/backgroundeService.jpg);
 }
 .ourServices__header {
@@ -438,6 +434,7 @@
   margin-top: 60px;
   display: flex;
   justify-content: space-evenly;
+  gap: 30px;
 }
 .ourServices__column {
   width: 285px;
@@ -467,6 +464,10 @@
   line-height: 30px;
   text-align: center;
 }
+.ourServices__footer {
+  display: flex;
+  margin-top: 80px;
+}
 .ourServices__footer-title {
   font-family: Ubuntu;
   font-size: 28px;
@@ -476,6 +477,69 @@
   color: #1E212C;
 }
 .ourServices__footer-button {
+  padding: 0 40px;
+  margin-left: 40px;
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 52px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  border-radius: 4px;
+  color: var(--white-color);
+  background-color: var(--accent-color);
+}
+
+.ourWork__container {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ourWork__header {
+  width: 78%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.ourWork__title {
+  font-family: Ubuntu;
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 59.8px;
+  text-align: left;
+}
+.ourWork__buttons {
+  display: flex;
+}
+.ourWork__pillars {
+  display: flex;
+  margin-top: 60px;
+  gap: 30px;
+}
+.ourWork__column {
+  box-shadow: 4px 4px 4px -4px rgba(30, 33, 44, 0.031372549);
+}
+.ourWork__footer {
+  margin-top: 80px;
+  display: flex;
+}
+.ourWork__footer-title {
+  font-family: Ubuntu;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 42px;
+  text-align: left;
+}
+.ourWork__footer-button {
+  margin-left: 40px;
+  padding: 0 40px;
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 52px;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
   color: var(--white-color);
   background-color: var(--accent-color);
 }/*# sourceMappingURL=style.css.map */

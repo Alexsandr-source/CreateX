@@ -155,3 +155,8 @@ legend {
     text-align: center;
     color: #787A80;
 }
+
+.button:hover {
+	background: rgb(158, 150, 150);
+    border: rgb(158, 150, 150);
+}
