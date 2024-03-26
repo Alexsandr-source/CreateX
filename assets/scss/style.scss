@@ -521,8 +521,29 @@
         text-align: left;
     }
     &__button {
+        padding: 12px;
+        border-radius: 100%;
+        background-color: var(--accent-color);
+        &Act {
+            background-color: var(--white-color);
+            & .ourWork__arrow path {
+                fill: #424551;
+            }
+        }
         &s {
             display: flex;
+            gap: 6px;
+        }
+        &:hover {
+            & .ourWork__arrow path {
+                fill: #424551;
+            }
+            background-color: var(--white-color);
+        }
+    }
+    &__arrow {
+        & path {
+            fill: var(--white-color);
         }
     }
     &__pillars {
@@ -531,7 +552,61 @@
         gap: 30px;
     }
     &__column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 4px;
         box-shadow: 4px 4px 4px -4px #1E212C08;
+        &-img {
+            width: 100%;
+            height: 70%;
+        }
+        &-widget {
+
+        }
+        &-title {
+            margin-top: 16px;
+            font-family: Ubuntu;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 30px;
+            text-align: center;
+        }
+        &-text {
+            margin-top: 4px;
+            font-family: Ubuntu;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            text-align: center;
+            color: #787A80;
+        }
+        &-button {
+            display: none;
+            margin-top: 24px;
+            padding: 0 40px;
+            font-family: Ubuntu;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 44px;
+            letter-spacing: 0.5px;
+
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            color: var(--white-color);
+            background-color: var(--accent-color);
+            &Act {
+                display: block;
+                border: 1px solid var(--accent-color);
+                color: var(--accent-color);
+                background-color: var(--white-color);
+            }
+            &:hover {
+                border: 1px solid var(--accent-color);
+                color: var(--accent-color);
+                background-color: var(--white-color);
+            }
+        }
     }
     &__footer {
         margin-top: 80px;

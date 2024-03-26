@@ -117,6 +117,10 @@ button::-moz-focus-inner {
 	border: 0;
 }
 
+button {
+	text-transform: uppercase;
+}
+
 label {
 	cursor: pointer;
 }

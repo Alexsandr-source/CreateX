@@ -1,6 +1,10 @@
 const changeConButton = document.querySelectorAll('.construction__button');
+const changeWorButton = document.querySelectorAll('.ourWork__button');
+const workPillars = document.querySelectorAll('#ourWorkPillars');
 const learnMore = document.querySelector('#learnMore');
 const submitRequest = document.querySelector('#submitRequest');
+const arrowLeft = document.querySelector('#arrowLeft');
+const arrowRight = document.querySelector('#arrowRight');
 const constructionPrev = document.querySelector('#constructionPrev');
 const constructionNext = document.querySelector('#constructionNext');
 const constructionBackground = document.querySelector('.construction');
@@ -15,6 +19,7 @@ const durationTime = document.getElementById('video-hud__duration');
 const actionButton = document.getElementById('video-hud__action');
 const actionImage = document.querySelector('.video__hud__action_img');
 const lineVideo = document.querySelector('.video__hud__progress_line')
+// const workColumns = Array.from(workPillars.querySelectorAll('.ourWork__column'));
 const constructionNumbers = Array.from(constructionNumber.querySelectorAll('.construction__number'));
 const constructionBackgrounds = [
     "assets/img/bg-image0.png",
@@ -35,6 +40,19 @@ function changesConButton() {
         this.classList.remove('construction__button-active')
     } else {
         this.classList.add('construction__button-active');
+    }
+};
+
+arrowLeft.addEventListener('click', changesWorButton);
+arrowRight.addEventListener('click', changesWorButton);
+function changesWorButton() {
+    for(let i = 0; i < changeWorButton.length; i++) {
+        changeWorButton[i].classList.remove('ourWork__buttonAct');
+    }
+    if (this.className === ('ourWork__button ourWork__buttonAct')) {
+        this.classList.remove('ourWork__buttonAct')
+    } else {
+        this.classList.add('ourWork__buttonAct');
     }
 };
 
@@ -75,6 +93,18 @@ constructionNumbers.forEach((number, index) => {
 updateNumber();
 updateBackground();
 
+// const updateColumn = (index) => {
+//     for (let number of constructionNumbers) {
+//         number.classList.remove('construction__number__active')
+//     }
+//     constructionNumbers[constructionIndex].classList.add('construction__number__active')
+// }
+// workColumns.forEach((number, index) => {
+//     number.addEventListener('click', () => {
+
+//     })
+// })
+
 //Video
 com.addEventListener('click', videoStart);
 function videoStart() {
@@ -91,7 +121,6 @@ let observer = new IntersectionObserver(() => {
     }
 }, { threshold: 0.4 })
 observer.observe(video)
-
 actionButton.addEventListener('click',videoAct);
 videoPlayer.addEventListener('click',videoAct);
 function videoAct() {
@@ -111,7 +140,6 @@ function videoAct() {
         durationTime.innerHTML = videoTime(videoPlayer.duration);
     }
 }
-
 videoPlayer.addEventListener('timeupdate',videoProgress);
 progressLine.addEventListener('click',videoChangeTime);
 function videoTime(time) {
