@@ -1,6 +1,5 @@
 const changeConButton = document.querySelectorAll('.construction__button');
 const changeWorButton = document.querySelectorAll('.ourWork__button');
-const workPillars = document.querySelectorAll('#ourWorkPillars');
 const learnMore = document.querySelector('#learnMore');
 const submitRequest = document.querySelector('#submitRequest');
 const arrowLeft = document.querySelector('#arrowLeft');
@@ -19,7 +18,10 @@ const durationTime = document.getElementById('video-hud__duration');
 const actionButton = document.getElementById('video-hud__action');
 const actionImage = document.querySelector('.video__hud__action_img');
 const lineVideo = document.querySelector('.video__hud__progress_line')
-// const workColumns = Array.from(workPillars.querySelectorAll('.ourWork__column'));
+const workSlider = document.querySelector('.ourWork__slider');
+const workSlides = Array.from(workSlider.querySelectorAll('.ourWork__pillars'));
+const workButtons = document.querySelectorAll('.ourWork__column-button');
+const workColumns = document.querySelectorAll('.ourWork__column');
 const constructionNumbers = Array.from(constructionNumber.querySelectorAll('.construction__number'));
 const constructionBackgrounds = [
     "assets/img/bg-image0.png",
@@ -29,6 +31,9 @@ const constructionBackgrounds = [
 ];
 let constructionCount = constructionBackgrounds.length;
 let constructionIndex = 0;
+let workSliderCount = workSlides.length;
+let workSliderIndex = 0;
+let workIndex = 0;
 
 learnMore.addEventListener('click', changesConButton);
 submitRequest.addEventListener('click', changesConButton);
@@ -77,7 +82,7 @@ function updateBackground() {
         }
     };
 };
-const updateNumber = (index) => {
+function updateNumber() {
     for (let number of constructionNumbers) {
         number.classList.remove('construction__number__active')
     }
@@ -93,17 +98,39 @@ constructionNumbers.forEach((number, index) => {
 updateNumber();
 updateBackground();
 
-// const updateColumn = (index) => {
-//     for (let number of constructionNumbers) {
-//         number.classList.remove('construction__number__active')
-//     }
-//     constructionNumbers[constructionIndex].classList.add('construction__number__active')
-// }
-// workColumns.forEach((number, index) => {
-//     number.addEventListener('click', () => {
+function updateColumn(index) {
+    workButtons.forEach(button => {
+        button.classList.remove('ourWork__column-buttonAct')
+    });
+    workButtons[index].classList.add('ourWork__column-buttonAct');
+}
+workColumns.forEach((number, index) => {
+    number.addEventListener('mouseover', () => {
+        workIndex = index;
+        updateColumn(workIndex)
+    })
+})
 
-//     })
-// })
+arrowLeft.addEventListener('click', prevWorkSlide);
+arrowRight.addEventListener('click', nextWorkSlide);
+function prevWorkSlide() {
+    workSliderIndex = (--workSliderIndex + workSliderCount) % workSliderCount;
+    updatePartner();
+}
+function nextWorkSlide() {
+    workSliderIndex = (++workSliderIndex) % workSliderCount;
+    updatePartner();
+}
+function updatePartner() {
+    workSlides.forEach((slide, index) => {
+    if (index === workSliderIndex) {
+        slide.style.display = 'flex';
+    } else {
+        slide.style.display = 'none';
+    }
+});
+}
+updatePartner();
 
 //Video
 com.addEventListener('click', videoStart);

@@ -533,12 +533,18 @@
 .ourWork__arrow path {
   fill: var(--white-color);
 }
+.ourWork__slider {
+  display: flex;
+  align-items: center;
+  gap: 5vmax;
+}
 .ourWork__pillars {
   display: flex;
   margin-top: 60px;
   gap: 30px;
 }
 .ourWork__column {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -548,6 +554,15 @@
 .ourWork__column-img {
   width: 100%;
   height: 70%;
+}
+.ourWork__column-widget {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--white-color);
 }
 .ourWork__column-title {
   margin-top: 16px;
