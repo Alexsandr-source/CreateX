@@ -608,6 +608,7 @@
 }
 .ourWork__footer {
   margin-top: 80px;
+  padding-bottom: 120px;
   display: flex;
 }
 .ourWork__footer-title {
@@ -628,4 +629,137 @@
   border-radius: 4px;
   color: var(--white-color);
   background-color: var(--accent-color);
+}
+
+.supported__container {
+  background-color: #F4F5F6;
+}
+.supported__header-title {
+  padding-top: 80px;
+  font-family: Ubuntu;
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 59.8px;
+  text-align: center;
+}
+.supported__header-line {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 60px;
+}
+.supported__header-img {
+  opacity: 0.4;
+}
+.supported__header-img:hover {
+  opacity: 1;
+}
+.supported__main {
+  margin-top: 170px;
+}
+.supported__main-content {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 135px;
+}
+.supported__main-title {
+  font-family: Ubuntu;
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 59.8px;
+  text-align: left;
+}
+.supported__main-text {
+  margin-top: 24px;
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  text-align: left;
+  color: #424551;
+}
+.supported__main-photo {
+  margin-top: 60px;
+}
+.supported__man {
+  margin-top: 24px;
+}
+.supported__man-name {
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 25.6px;
+  text-align: left;
+}
+.supported__man-position {
+  font-family: Ubuntu;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  color: #9FA0A3;
+}
+.supported__column {
+  width: 30%;
+  position: relative;
+  bottom: -50px;
+}
+.supported__column-main {
+  width: 40%;
+}
+
+.facts__container {
+  position: relative;
+  margin-top: 140px;
+}
+.facts__title {
+  font-family: Ubuntu;
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 59.8px;
+  text-align: center;
+}
+.facts__statistics {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+.facts__number {
+  width: 148px;
+  height: 148px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Ubuntu;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 48px;
+  text-align: center;
+}
+.facts__number1 {
+  background-image: url(../img/circle1.png);
+}
+.facts__number2 {
+  background-image: url(../img/circle2.png);
+}
+.facts__number3 {
+  background-image: url(../img/circle3.png);
+}
+.facts__number4 {
+  background-image: url(../img/circle4.png);
+}
+.facts__text {
+  margin-top: 20px;
+  font-family: Ubuntu;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: center;
+}
+.facts__background {
+  position: absolute;
+  top: -300px;
+  left: 0px;
 }/*# sourceMappingURL=style.css.map */

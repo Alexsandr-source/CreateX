@@ -622,6 +622,7 @@
     }
     &__footer {
         margin-top: 80px;
+        padding-bottom: 120px;
         display: flex;
         &-title {
             font-family: Ubuntu;
@@ -643,5 +644,145 @@
             color: var(--white-color);
             background-color: var(--accent-color);
         }
+    }
+}
+.supported {
+    &__container {
+        background-color: #F4F5F6;
+    }
+    &__header {
+        &-title {
+            padding-top: 80px;
+            font-family: Ubuntu;
+            font-size: 46px;
+            font-weight: 700;
+            line-height: 59.8px;
+            text-align: center;
+        }
+        &-line {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin-top: 60px;
+        }
+        &-img {
+            opacity: .4;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    &__main {
+        margin-top: 170px;
+        
+        &-content {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 135px;
+        }
+        &-title {
+            font-family: Ubuntu;
+            font-size: 46px;
+            font-weight: 700;
+            line-height: 59.8px;
+            text-align: left;
+        }
+        &-text {
+            margin-top: 24px;
+            font-family: Ubuntu;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 25.6px;
+            text-align: left;
+            color: #424551;
+        }
+        &-photo {
+            margin-top: 60px;
+        }
+    }
+    &__man {
+        margin-top: 24px;
+        &-name {
+            font-family: Ubuntu;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 25.6px;
+            text-align: left;
+        }
+
+        &-position {
+            font-family: Ubuntu;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            text-align: left;   
+            color: #9FA0A3;
+        }
+    }
+    &__column {
+        width: 30%;
+        position: relative;
+        bottom: -50px;
+        &-main {
+            width: 40%;
+        }
+    }
+}
+.facts {
+    &__container {
+        position: relative;
+        margin-top: 140px;
+    }
+    &__title {
+        font-family: Ubuntu;
+        font-size: 46px;
+        font-weight: 700;
+        line-height: 59.8px;
+        text-align: center;
+    }
+    &__statistics {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+    }
+    &__number {
+        width: 148px;
+        height: 148px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-family: Ubuntu;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 48px;
+        text-align: center;
+        &1 {
+            background-image: url(../img/circle1.png);
+        }
+        &2 {
+            background-image: url(../img/circle2.png);
+        }
+        &3 {
+            background-image: url(../img/circle3.png);
+        }
+        &4 {
+            background-image: url(../img/circle4.png);
+        }
+    }
+    &__text {
+        margin-top: 20px;
+        font-family: Ubuntu;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        text-align: center;
+    }
+    &__background {
+        position: absolute;
+        top: -300px;
+        left: 0px;
     }
 }
