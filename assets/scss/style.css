@@ -762,4 +762,47 @@
   position: absolute;
   top: -300px;
   left: 0px;
+}
+
+.news__container {
+  margin-top: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.news__title {
+  font-family: Ubuntu;
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 59.8px;
+  text-align: center;
+}
+.news__pillars {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.news__column {
+  width: 40%;
+}
+.news__block {
+  border-radius: 4px;
+  box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.0784313725);
+}
+.news__block-title {
+  margin-top: 24px;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: left;
+}
+.news__block-text {
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  text-align: left;
+  color: #424551;
 }/*# sourceMappingURL=style.css.map */
