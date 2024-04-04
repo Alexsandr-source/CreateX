@@ -898,6 +898,31 @@
 }
 .discussDetails {
     &__container {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 80px;
         background-image: url(../img/discussDetailsImage.jpg);
+    }
+    &__form {
+        width: 495px;
+        margin-right: 345px;
+        border-radius: 4px;
+        border: 1px solid #E5E8ED;
+        background-color: var(--white-color);
+    }
+    &__title {
+        font-family: Ubuntu;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 42px;
+        text-align: center;
+    }
+    &__text {
+        font-family: Ubuntu;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        text-align: left;
+        color: #1E212C;
     }
 }
