@@ -784,11 +784,13 @@
         position: absolute;
         top: -300px;
         left: 0px;
+        z-index: 0;
     }
 }
 .news {
     &__container {
         margin-top: 180px;
+        margin-bottom: 120px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -802,18 +804,30 @@
     }
     &__pillars {
         margin-top: 60px;
+        gap: 50px;
         display: flex;
         justify-content: center;
-        gap: 30px;
     }
     &__column {
-        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 495px;
         &-large {
+            width: 700px;
         }
     }
     &__block {
+        position: relative;
+
         border-radius: 4px;
-        box-shadow: 0px 80px 80px -20px #9A9CA514;
+        box-shadow: 0px 80px 80px -20px #1E212C0D;
+        z-index: 1;
+        &:hover {
+            .news__block-title {
+                color: var(--accent-color);
+            }
+        }
         &-title {
             margin-top: 24px;
             font-family: Ubuntu;
@@ -823,6 +837,7 @@
             text-align: left;
         }
         &-text {
+            margin-top: 16px;
             font-family: Ubuntu;
             font-size: 16px;
             font-weight: 400;
@@ -833,17 +848,56 @@
 
     }
     &__info {
+        display: flex;
+        margin-top: 12px;
         &-block {
+            padding: 0px 12px;
+            display: flex;
+            font-family: Ubuntu;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            text-align: left;
+            & p {
+                color: #787A80;
+            }
+            & img {
+                margin-right: 9px;
+            }
+            &:nth-child(2) {
+                border-left: 1px solid #787A80;
+                border-right: 1px solid #787A80;
+            }
+        }
+    }
+    &__footer {
+        margin-top: 80px;
+        display: flex;
+        gap: 40px;
+        &-title {
+            font-family: Ubuntu;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 42px;
+            text-align: left;
+        }
+        &-button {
+            padding: 0 40px;
+            font-family: Ubuntu;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 52px;
+            letter-spacing: 0.5px;
+            text-align: center;
 
+            border-radius: 4px;
+            color: var(--white-color);
+            background-color: var(--accent-color);
         }
-        &-news {
-            
-        }
-        &-date {
-
-        }
-        &-comments {
-
-        }
+    }
+}
+.discussDetails {
+    &__container {
+        background-image: url(../img/discussDetailsImage.jpg);
     }
 }
