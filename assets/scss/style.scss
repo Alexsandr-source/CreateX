@@ -900,12 +900,15 @@
     &__container {
         display: flex;
         justify-content: flex-end;
-        padding-top: 80px;
+        padding: 80px 345px;
         background-image: url(../img/discussDetailsImage.jpg);
     }
     &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 495px;
-        margin-right: 345px;
+        padding: 48px 40px;
         border-radius: 4px;
         border: 1px solid #E5E8ED;
         background-color: var(--white-color);
@@ -917,12 +920,90 @@
         line-height: 42px;
         text-align: center;
     }
+    &__fields {
+        display: flex;
+        flex-direction: column;
+        margin-top: 24px;
+        gap: 20px;
+    }
     &__text {
         font-family: Ubuntu;
         font-size: 14px;
         font-weight: 400;
         line-height: 21px;
         text-align: left;
+
         color: #1E212C;
+    }
+    &__input {
+        width: 100%;
+        margin-top: 8px;
+        padding: 11px 16px;
+
+        font-family: Ubuntu;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        text-align: left;
+
+
+        border-radius: 4px 0px 0px 0px;
+        border: 1px solid #D7DADD;
+        background-color: #F4F5F6;
+    }
+    &__EULA {
+        display: flex;
+        gap: 12px;
+        &-input[type="checkbox"] {
+            display: none;
+            &:checked + label:before {
+                content: '\2713';
+                font-size: 20px;
+                line-height: 20px;
+                text-align: center;
+                color: var(--white-color);
+            }
+        }
+        &-label {
+            display: inline-block;
+            padding-left: 25px;
+            position: relative;
+            cursor: pointer;
+            font-size: 16px;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 20px;
+                height: 20px;
+                border-radius: 3px;
+                border: 2px solid var(--accent-color);
+                background-color: var(--accent-color);
+            }
+        }
+        &-text {
+            font-family: Ubuntu;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            text-align: left;
+
+            color: #424551;
+        }
+    }
+    &__button {
+        margin-top: 24px;
+        padding: 6px 32px;
+        font-family: Ubuntu;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 44px;
+        letter-spacing: 0.5px;
+        text-align: center;
+
+        border-radius: 4px;
+        color: var(--white-color);
+        background-color: var(--accent-color);
     }
 }
