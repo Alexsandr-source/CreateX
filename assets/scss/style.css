@@ -971,4 +971,73 @@
   border-radius: 4px;
   color: var(--white-color);
   background-color: var(--accent-color);
+}
+
+.footer {
+  background-color: #1E212C;
+}
+.footer__container {
+  display: flex;
+  justify-content: space-around;
+  padding: 80px 345px;
+}
+.footer__row {
+  display: flex;
+  gap: 20%;
+}
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.footer__navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.footer__navigation-header {
+  display: flex;
+  justify-content: space-between;
+}
+.footer__navigation-messengers {
+  display: flex;
+  gap: 16px;
+}
+.footer__navigation-text {
+  font-family: Ubuntu;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  color: #787A80;
+}
+.footer__stay {
+  display: flex;
+  flex-direction: column;
+}
+.footer__stay-title {
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  text-align: left;
+  color: var(--white-color);
+}
+.footer__email {
+  margin-top: 24px;
+  display: flex;
+}
+.footer__email-input {
+  padding: 12px 16px;
+  border-radius: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1215686275);
+}
+.footer__email-button {
+  position: relative;
+  right: 1px;
+  padding: 12px 25px;
+  border-radius: 1px;
+  background-color: var(--accent-color);
+  color: var(--white-color);
 }/*# sourceMappingURL=style.css.map */
