@@ -1011,19 +1011,54 @@
     background-color: #1E212C;
     &__container {
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
-        padding: 80px 345px;
+        gap: 50px;
+        padding: 80px 5%;
     }
     &__row {
         display: flex;
-        gap: 20%;
+        justify-content: space-between;
+        &-navigation {
+            display: flex;
+            gap: 154px;
+        }
     }
     &__column {
         display: flex;
+        justify-content: space-between;
         flex-direction: column;
-        gap: 24px;
+        gap: 13px;
+    }
+    &__title {
+        font-family: Ubuntu;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 1px;
+        text-align: left;
+
+        color: var(--white-color);
+    }
+    &__list {
+        width: 140px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        &-office {
+            width: 350px;
+        }
+    }
+    &__link {
+        display: flex;
+        gap: 4px;
+        color: #787A80;
+        & span {
+            color: var(--white-color);
+        }
     }
     &__navigation {
+        width: 500px;
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -1046,6 +1081,7 @@
         }
     }
     &__stay {
+        width: 500px;
         display: flex;
         flex-direction: column;
         &-title {
@@ -1056,6 +1092,16 @@
             text-align: left;
 
             color: var(--white-color);
+        }
+        &-text {
+            margin-top: 16px;
+            font-family: Ubuntu;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 18px;
+            text-align: left;
+
+            color: #787A80;
         }
     }
     &__email {
