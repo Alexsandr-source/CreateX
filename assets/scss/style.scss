@@ -1122,4 +1122,33 @@
             color: var(--white-color);
         }
     }
+    &__rights {
+        font-family: Ubuntu;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        text-align: left;
+
+        color: var(--white-color);
+    }
+    &__toTop {
+        display: flex;
+        align-items: flex-end;
+        gap: 16px;
+        &-text {
+            font-family: Ubuntu;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            text-align: left;
+
+            color: var(--white-color);
+        }
+        &-button {
+            padding: 8px;
+            border-radius: 4px;
+            
+            background-color: var(--accent-color);
+        }
+    }
 }

@@ -23,6 +23,7 @@ const workSlides = Array.from(workSlider.querySelectorAll('.ourWork__pillars'));
 const workButtons = document.querySelectorAll('.ourWork__column-button');
 const workColumns = document.querySelectorAll('.ourWork__column');
 const constructionNumbers = Array.from(constructionNumber.querySelectorAll('.construction__number'));
+const scrollToTop = document.querySelector('#scrollToTop')
 const constructionBackgrounds = [
     "assets/img/bg-image0.png",
     "assets/img/bg-image1.png",
@@ -193,4 +194,12 @@ function videoChangeTime(e) {
     let mouseX = Math.floor(e.pageX - progressLine.offsetLeft);
     let progress = mouseX / (progressLine.offsetWidth / 100);
     videoPlayer.currentTime = videoPlayer.duration * (progress / 100);
+}
+
+scrollToTop.addEventListener('click', goToTop);
+function goToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+    });
 }
