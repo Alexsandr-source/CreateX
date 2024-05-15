@@ -1,33 +1,35 @@
-let slider = document.querySelector('.ourWork__container-slider'),
-workSlider = slider.querySelector('.ourWork__slider'),
-sliderTrack = slider.querySelector('.ourWork__slider-track'),
-slides = slider.querySelectorAll('.slide'),
-arrows = slider.querySelector('.slider-arrows'),
-prev = arrows.children[0],
-next = arrows.children[1],
-slideWidth = slides[0].offsetWidth,
-slideIndex = 0,
-posInit = 0,
-posX1 = 0,
-posX2 = 0,
-posFinal = 0,
-posThreshold = slideWidth * .35,
-trfRegExp = /[-0-9.]+(?=px)/,
+let slider = document.querySelector('.ourWork__container-slider');
+let workSlider = slider.querySelector('.ourWork__slider');
+let sliderTrack = slider.querySelector('.ourWork__slider-track');
+// workColumns = document.querySelectorAll('.ourWork__column'),
+let slides = slider.querySelectorAll('.ourWork__column');
+let arrows = slider.querySelector('.ourWork__buttons');
+let prev = arrows.children[0];
+let next = arrows.children[1];
+let slideWidth = slides[0].offsetWidth;
+let slideIndex = 0;
+let posInit = 0;
+let posX1 = 0;
+let posX2 = 0;
+let posFinal = 0;
+let posThreshold = slideWidth * .35;
+let trfRegExp = /[-0-9.]+(?=px)/;
 slide = function() {
   sliderTrack.style.transition = 'transform .5s';
   sliderTrack.style.transform = `translate3d(-${slideIndex * slideWidth}px, 0px, 0px)`;
   prev.classList.toggle('disabled', slideIndex === 0);
   next.classList.toggle('disabled', slideIndex === --slides.length);
 }
+console.log(arrows);
 
 
-
-const changeConButton = document.querySelectorAll('.construction__button'),
+const
+changeConButton = document.querySelectorAll('.construction__button'),
 changeWorButton = document.querySelectorAll('.ourWork__button'),
 learnMore = document.querySelector('#learnMore'),
 submitRequest = document.querySelector('#submitRequest'),
-arrowLeft = document.querySelector('#arrowLeft'),
-arrowRight = document.querySelector('#arrowRight'),
+// arrowLeft = document.querySelector('#arrowLeft'),
+// arrowRight = document.querySelector('#arrowRight'),
 constructionPrev = document.querySelector('#constructionPrev'),
 constructionNext = document.querySelector('#constructionNext'),
 constructionBackground = document.querySelector('.construction'),
@@ -43,7 +45,6 @@ actionButton = document.getElementById('video-hud__action'),
 actionImage = document.querySelector('.video__hud__action_img'),
 lineVideo = document.querySelector('.video__hud__progress_line'),
 workButtons = document.querySelectorAll('.ourWork__column-button'),
-workColumns = document.querySelectorAll('.ourWork__column'),
 constructionNumbers = Array.from(constructionNumber.querySelectorAll('.construction__number')),
 scrollToTop = document.querySelector('#scrollToTop'),
 constructionBackgrounds = [
@@ -72,8 +73,10 @@ function changesConButton() {
     }
 };
 
-arrowLeft.addEventListener('click', changesWorButton);
-arrowRight.addEventListener('click', changesWorButton);
+/* workButton */
+
+prev.addEventListener('click', changesWorButton);
+next.addEventListener('click', changesWorButton);
 function changesWorButton() {
     for(let i = 0; i < changeWorButton.length; i++) {
         changeWorButton[i].classList.remove('ourWork__buttonAct');
@@ -84,6 +87,27 @@ function changesWorButton() {
         this.classList.add('ourWork__buttonAct');
     }
 };
+
+prev.addEventListener('click', prevWorkSlide);
+next.addEventListener('click', nextWorkSlide);
+function prevWorkSlide() {
+    workSliderIndex = (--workSliderIndex + workSliderCount) % workSliderCount;
+    updatePartner();
+}
+function nextWorkSlide() {
+    workSliderIndex = (++workSliderIndex) % workSliderCount;
+    updatePartner();
+}
+function updatePartner() {
+    workSlides.forEach((slide, index) => {
+    if (index === workSliderIndex) {
+        slide.style.display = 'flex';
+    } else {
+        slide.style.display = 'none';
+    }
+});
+}
+updatePartner();
 
 constructionPrev.addEventListener('click', constructionPrevBackground);
 constructionNext.addEventListener('click', nextconstructionBackgrounds);
@@ -128,33 +152,12 @@ function updateColumn(index) {
     });
     workButtons[index].classList.add('ourWork__column-buttonAct');
 }
-workColumns.forEach((number, index) => {
+slides.forEach((number, index) => {
     number.addEventListener('mouseover', () => {
         workIndex = index;
         updateColumn(workIndex)
     })
 })
-
-arrowLeft.addEventListener('click', prevWorkSlide);
-arrowRight.addEventListener('click', nextWorkSlide);
-function prevWorkSlide() {
-    workSliderIndex = (--workSliderIndex + workSliderCount) % workSliderCount;
-    updatePartner();
-}
-function nextWorkSlide() {
-    workSliderIndex = (++workSliderIndex) % workSliderCount;
-    updatePartner();
-}
-function updatePartner() {
-    workSlides.forEach((slide, index) => {
-    if (index === workSliderIndex) {
-        slide.style.display = 'flex';
-    } else {
-        slide.style.display = 'none';
-    }
-});
-}
-updatePartner();
 
 //Video
 com.addEventListener('click', videoStart);
