@@ -498,6 +498,7 @@
   align-items: center;
 }
 .ourWork__container-slider {
+  margin-top: 100px;
   position: relative;
   width: 1000px;
   height: 380px;

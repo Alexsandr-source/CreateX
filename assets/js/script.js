@@ -1,26 +1,184 @@
-let slider = document.querySelector('.ourWork__container-slider');
-let workSlider = slider.querySelector('.ourWork__slider');
-let sliderTrack = slider.querySelector('.ourWork__slider-track');
-// workColumns = document.querySelectorAll('.ourWork__column'),
-let slides = slider.querySelectorAll('.ourWork__column');
-let arrows = slider.querySelector('.ourWork__buttons');
-let prev = arrows.children[0];
-let next = arrows.children[1];
-let slideWidth = slides[0].offsetWidth;
-let slideIndex = 0;
-let posInit = 0;
-let posX1 = 0;
-let posX2 = 0;
-let posFinal = 0;
-let posThreshold = slideWidth * .35;
-let trfRegExp = /[-0-9.]+(?=px)/;
+let slider = document.querySelector('.ourWork__container-slider'),
+  sliderList = slider.querySelector('.ourWork__slider'),
+  sliderTrack = slider.querySelector('.ourWork__slider-track'),
+  slides = slider.querySelectorAll('.ourWork__column'),
+  arrows = document.querySelector('.ourWork__buttons'),
+  prev = arrows.children[0],
+  next = arrows.children[1],
+  slideWidth = slides[0].offsetWidth,
+  slideIndex = 0,
+  posInit = 0,
+  posX1 = 0,
+  posX2 = 0,
+  posY1 = 0,
+  posY2 = 0,
+  posFinal = 0,
+  isSwipe = false,
+  isScroll = false,
+  allowSwipe = true,
+  transition = true,
+  nextTrf = 0,
+  prevTrf = 0,
+  lastTrf = (--slides.length) * slideWidth,
+  posThreshold = slides[0].offsetWidth * 0.35,
+  trfRegExp = /([-0-9.]+(?=px))/,
+  getEvent = function(evt) {
+    return (evt.type.search('touch') !== -1) ? evt.touches[0] : evt;
+},
 slide = function() {
-  sliderTrack.style.transition = 'transform .5s';
-  sliderTrack.style.transform = `translate3d(-${slideIndex * slideWidth}px, 0px, 0px)`;
-  prev.classList.toggle('disabled', slideIndex === 0);
-  next.classList.toggle('disabled', slideIndex === --slides.length);
-}
-console.log(arrows);
+    if (transition) {
+      sliderTrack.style.transition = 'transform .5s';
+    }
+    sliderTrack.style.transform = `translate3d(-${slideIndex * slideWidth}px, 0px, 0px)`;
+
+    prev.classList.toggle('disabled', slideIndex === 0);
+    next.classList.toggle('disabled', slideIndex === (--slides.length));
+},
+swipeStart = function(evt) {
+    let e = getEvent(evt);
+
+    if (allowSwipe) {
+
+      transition = true;
+
+      nextTrf = (slideIndex + 1) * -slideWidth;
+      prevTrf = (slideIndex - 1) * -slideWidth;
+
+      posInit = posX1 = e.clientX;
+      posY1 = e.clientY;
+
+      sliderTrack.style.transition = '';
+
+      document.addEventListener('touchmove', swipeAction);
+      document.addEventListener('mousemove', swipeAction);
+      document.addEventListener('touchend', swipeEnd);
+      document.addEventListener('mouseup', swipeEnd);
+
+      sliderList.classList.remove('grab');
+      sliderList.classList.add('grabbing');
+    }
+},
+swipeAction = function(evt) {
+    let e = getEvent(evt),
+      style = sliderTrack.style.transform,
+      transform = +style.match(trfRegExp)[0];
+
+    posX2 = posX1 - e.clientX;
+    posX1 = e.clientX;
+
+    posY2 = posY1 - e.clientY;
+    posY1 = e.clientY;
+
+    if (!isSwipe && !isScroll) {
+      let posY = Math.abs(posY2);
+      if (posY > 7 || posX2 === 0) {
+        isScroll = true;
+        allowSwipe = false;
+      } else if (posY < 7) {
+        isSwipe = true;
+      }
+    }
+
+    if (isSwipe) {
+      if (slideIndex === 0) {
+        if (posInit < posX1) {
+          setTransform(transform, 0);
+          return;
+        } else {
+          allowSwipe = true;
+        }
+      }
+
+      if (slideIndex === --slides.length) {
+        if (posInit > posX1) {
+          setTransform(transform, lastTrf);
+          return;
+        } else {
+          allowSwipe = true;
+        }
+      }
+
+      if (posInit > posX1 && transform < nextTrf || posInit < posX1 && transform > prevTrf) {
+        reachEdge();
+        return;
+      }
+
+      sliderTrack.style.transform = `translate3d(${transform - posX2}px, 0px, 0px)`;
+    }
+
+  },
+  swipeEnd = function() {
+    posFinal = posInit - posX1;
+
+    isScroll = false;
+    isSwipe = false;
+
+    document.removeEventListener('touchmove', swipeAction);
+    document.removeEventListener('mousemove', swipeAction);
+    document.removeEventListener('touchend', swipeEnd);
+    document.removeEventListener('mouseup', swipeEnd);
+
+    sliderList.classList.add('grab');
+    sliderList.classList.remove('grabbing');
+
+    if (allowSwipe) {
+      if (Math.abs(posFinal) > posThreshold) {
+        if (posInit < posX1) {
+          slideIndex--;
+        } else if (posInit > posX1) {
+          slideIndex++;
+        }
+      }
+
+      if (posInit !== posX1) {
+        allowSwipe = false;
+        slide();
+      } else {
+        allowSwipe = true;
+      }
+
+    } else {
+      allowSwipe = true;
+    }
+
+  },
+  setTransform = function(transform, comapreTransform) {
+    if (transform >= comapreTransform) {
+      if (transform > comapreTransform) {
+        sliderTrack.style.transform = `translate3d(${comapreTransform}px, 0px, 0px)`;
+      }
+    }
+    allowSwipe = false;
+  },
+  reachEdge = function() {
+    transition = false;
+    swipeEnd();
+    allowSwipe = true;
+  };
+
+sliderTrack.style.transform = 'translate3d(0px, 0px, 0px)';
+sliderList.classList.add('grab');
+
+sliderTrack.addEventListener('transitionend', () => allowSwipe = true);
+slider.addEventListener('touchstart', swipeStart);
+slider.addEventListener('mousedown', swipeStart);
+
+arrows.addEventListener('click', function() {
+  let target = evt.target;
+
+  if (target.classList.contains('next')) {
+    slideIndex++;
+  } else if (target.classList.contains('prev')) {
+    slideIndex--;
+  } else {
+    return;
+  }
+
+  slide();
+});
+
+
+
 
 
 const
@@ -28,8 +186,6 @@ changeConButton = document.querySelectorAll('.construction__button'),
 changeWorButton = document.querySelectorAll('.ourWork__button'),
 learnMore = document.querySelector('#learnMore'),
 submitRequest = document.querySelector('#submitRequest'),
-// arrowLeft = document.querySelector('#arrowLeft'),
-// arrowRight = document.querySelector('#arrowRight'),
 constructionPrev = document.querySelector('#constructionPrev'),
 constructionNext = document.querySelector('#constructionNext'),
 constructionBackground = document.querySelector('.construction'),
@@ -56,8 +212,6 @@ constructionBackgrounds = [
 
 let constructionCount = constructionBackgrounds.length,
 constructionIndex = 0,
-workSliderCount = workSlides.length,
-workSliderIndex = 0,
 workIndex = 0;
 
 learnMore.addEventListener('click', changesConButton);
@@ -75,39 +229,54 @@ function changesConButton() {
 
 /* workButton */
 
-prev.addEventListener('click', changesWorButton);
-next.addEventListener('click', changesWorButton);
-function changesWorButton() {
-    for(let i = 0; i < changeWorButton.length; i++) {
-        changeWorButton[i].classList.remove('ourWork__buttonAct');
-    }
-    if (this.className === ('ourWork__button ourWork__buttonAct')) {
-        this.classList.remove('ourWork__buttonAct')
-    } else {
-        this.classList.add('ourWork__buttonAct');
-    }
-};
+// prev.addEventListener('click', changesWorButton);
+// next.addEventListener('click', changesWorButton);
+// function changesWorButton() {
+//     for(let i = 0; i < changeWorButton.length; i++) {
+//         changeWorButton[i].classList.remove('ourWork__buttonAct');
+//     }
+//     if (this.className === ('ourWork__button ourWork__buttonAct')) {
+//         this.classList.remove('ourWork__buttonAct')
+//     } else {
+//         this.classList.add('ourWork__buttonAct');
+//     }
+// };
 
-prev.addEventListener('click', prevWorkSlide);
-next.addEventListener('click', nextWorkSlide);
-function prevWorkSlide() {
-    workSliderIndex = (--workSliderIndex + workSliderCount) % workSliderCount;
-    updatePartner();
-}
-function nextWorkSlide() {
-    workSliderIndex = (++workSliderIndex) % workSliderCount;
-    updatePartner();
-}
-function updatePartner() {
-    workSlides.forEach((slide, index) => {
-    if (index === workSliderIndex) {
-        slide.style.display = 'flex';
-    } else {
-        slide.style.display = 'none';
-    }
-});
-}
-updatePartner();
+// prev.addEventListener('click', prevWorkSlide);
+// next.addEventListener('click', nextWorkSlide);
+// function prevWorkSlide() {
+//     slideIndex = (--slideIndex + workSliderCount) % workSliderCount;
+//     updatePartner();
+// }
+// function nextWorkSlide() {
+//     slideIndex = (++slideIndex) % workSliderCount;
+//     updatePartner();
+// }
+
+// function updatePartner() {
+//     slides.forEach((slide, index) => {
+//     if (index === slideIndex) {
+//         slide.style.display = 'flex';
+//     } else {
+//         slide.style.display = 'none';
+//     }
+// });
+// }
+// updatePartner();
+
+
+
+
+/* sliderColumn */
+
+slides.forEach((number, index) => {
+    number.addEventListener('mouseover', () => {
+        workIndex = index;
+        updateColumn(workIndex)
+    })
+})
+
+/* construction */
 
 constructionPrev.addEventListener('click', constructionPrevBackground);
 constructionNext.addEventListener('click', nextconstructionBackgrounds);
@@ -152,14 +321,8 @@ function updateColumn(index) {
     });
     workButtons[index].classList.add('ourWork__column-buttonAct');
 }
-slides.forEach((number, index) => {
-    number.addEventListener('mouseover', () => {
-        workIndex = index;
-        updateColumn(workIndex)
-    })
-})
 
-//Video
+/* Video */
 com.addEventListener('click', videoStart);
 function videoStart() {
     videoHub.style.display = 'block';
