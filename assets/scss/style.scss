@@ -535,6 +535,8 @@
         border-radius: 100%;
         background-color: var(--accent-color);
         &Act {
+            padding: 12px;
+            border-radius: 100%;
             background-color: var(--white-color);
             & .ourWork__arrow path {
                 fill: #424551;
@@ -565,7 +567,7 @@
         overflow: hidden;
         &-track {
             display: flex;
-            gap: 5vmax;
+            gap: 70px;
             transition: transform 0.5s ease;
         }
     }

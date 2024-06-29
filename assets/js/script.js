@@ -1,186 +1,4 @@
-let slider = document.querySelector('.ourWork__container-slider'),
-  sliderList = slider.querySelector('.ourWork__slider'),
-  sliderTrack = slider.querySelector('.ourWork__slider-track'),
-  slides = slider.querySelectorAll('.ourWork__column'),
-  arrows = document.querySelector('.ourWork__buttons'),
-  prev = arrows.children[0],
-  next = arrows.children[1],
-  slideWidth = slides[0].offsetWidth,
-  slideIndex = 0,
-  posInit = 0,
-  posX1 = 0,
-  posX2 = 0,
-  posY1 = 0,
-  posY2 = 0,
-  posFinal = 0,
-  isSwipe = false,
-  isScroll = false,
-  allowSwipe = true,
-  transition = true,
-  nextTrf = 0,
-  prevTrf = 0,
-  lastTrf = (--slides.length) * slideWidth,
-  posThreshold = slides[0].offsetWidth * 0.35,
-  trfRegExp = /([-0-9.]+(?=px))/,
-  getEvent = function(evt) {
-    return (evt.type.search('touch') !== -1) ? evt.touches[0] : evt;
-},
-slide = function() {
-    if (transition) {
-      sliderTrack.style.transition = 'transform .5s';
-    }
-    sliderTrack.style.transform = `translate3d(-${slideIndex * slideWidth}px, 0px, 0px)`;
-
-    prev.classList.toggle('disabled', slideIndex === 0);
-    next.classList.toggle('disabled', slideIndex === (--slides.length));
-},
-swipeStart = function(evt) {
-    let e = getEvent(evt);
-
-    if (allowSwipe) {
-
-      transition = true;
-
-      nextTrf = (slideIndex + 1) * -slideWidth;
-      prevTrf = (slideIndex - 1) * -slideWidth;
-
-      posInit = posX1 = e.clientX;
-      posY1 = e.clientY;
-
-      sliderTrack.style.transition = '';
-
-      document.addEventListener('touchmove', swipeAction);
-      document.addEventListener('mousemove', swipeAction);
-      document.addEventListener('touchend', swipeEnd);
-      document.addEventListener('mouseup', swipeEnd);
-
-      sliderList.classList.remove('grab');
-      sliderList.classList.add('grabbing');
-    }
-},
-swipeAction = function(evt) {
-    let e = getEvent(evt),
-      style = sliderTrack.style.transform,
-      transform = +style.match(trfRegExp)[0];
-
-    posX2 = posX1 - e.clientX;
-    posX1 = e.clientX;
-
-    posY2 = posY1 - e.clientY;
-    posY1 = e.clientY;
-
-    if (!isSwipe && !isScroll) {
-      let posY = Math.abs(posY2);
-      if (posY > 7 || posX2 === 0) {
-        isScroll = true;
-        allowSwipe = false;
-      } else if (posY < 7) {
-        isSwipe = true;
-      }
-    }
-
-    if (isSwipe) {
-      if (slideIndex === 0) {
-        if (posInit < posX1) {
-          setTransform(transform, 0);
-          return;
-        } else {
-          allowSwipe = true;
-        }
-      }
-
-      if (slideIndex === --slides.length) {
-        if (posInit > posX1) {
-          setTransform(transform, lastTrf);
-          return;
-        } else {
-          allowSwipe = true;
-        }
-      }
-
-      if (posInit > posX1 && transform < nextTrf || posInit < posX1 && transform > prevTrf) {
-        reachEdge();
-        return;
-      }
-
-      sliderTrack.style.transform = `translate3d(${transform - posX2}px, 0px, 0px)`;
-    }
-
-  },
-  swipeEnd = function() {
-    posFinal = posInit - posX1;
-
-    isScroll = false;
-    isSwipe = false;
-
-    document.removeEventListener('touchmove', swipeAction);
-    document.removeEventListener('mousemove', swipeAction);
-    document.removeEventListener('touchend', swipeEnd);
-    document.removeEventListener('mouseup', swipeEnd);
-
-    sliderList.classList.add('grab');
-    sliderList.classList.remove('grabbing');
-
-    if (allowSwipe) {
-      if (Math.abs(posFinal) > posThreshold) {
-        if (posInit < posX1) {
-          slideIndex--;
-        } else if (posInit > posX1) {
-          slideIndex++;
-        }
-      }
-
-      if (posInit !== posX1) {
-        allowSwipe = false;
-        slide();
-      } else {
-        allowSwipe = true;
-      }
-
-    } else {
-      allowSwipe = true;
-    }
-
-  },
-  setTransform = function(transform, comapreTransform) {
-    if (transform >= comapreTransform) {
-      if (transform > comapreTransform) {
-        sliderTrack.style.transform = `translate3d(${comapreTransform}px, 0px, 0px)`;
-      }
-    }
-    allowSwipe = false;
-  },
-  reachEdge = function() {
-    transition = false;
-    swipeEnd();
-    allowSwipe = true;
-  };
-
-sliderTrack.style.transform = 'translate3d(0px, 0px, 0px)';
-sliderList.classList.add('grab');
-
-sliderTrack.addEventListener('transitionend', () => allowSwipe = true);
-slider.addEventListener('touchstart', swipeStart);
-slider.addEventListener('mousedown', swipeStart);
-
-arrows.addEventListener('click', function() {
-  let target = evt.target;
-
-  if (target.classList.contains('next')) {
-    slideIndex++;
-  } else if (target.classList.contains('prev')) {
-    slideIndex--;
-  } else {
-    return;
-  }
-
-  slide();
-});
-
-
-
-
-
+// Touch events for swipe functionality
 const
 changeConButton = document.querySelectorAll('.construction__button'),
 changeWorButton = document.querySelectorAll('.ourWork__button'),
@@ -196,11 +14,15 @@ video = document.querySelector('.video'),
 videoPlayer = document.getElementById('video-player'),
 progressLine = document.getElementById('video-hud__progress-line'),
 currTime = document.getElementById('video-hud__curr-time'),
+slider = document.querySelector('.ourWork__slider-track'),
 durationTime = document.getElementById('video-hud__duration'),
 actionButton = document.getElementById('video-hud__action'),
 actionImage = document.querySelector('.video__hud__action_img'),
 lineVideo = document.querySelector('.video__hud__progress_line'),
+workButtonPrev = document.querySelector('#workButtonPrev'),
+workButtonNext = document.querySelector('#workButtonNext'),
 workButtons = document.querySelectorAll('.ourWork__column-button'),
+workColumns = document.querySelectorAll('.ourWork__column'),
 constructionNumbers = Array.from(constructionNumber.querySelectorAll('.construction__number')),
 scrollToTop = document.querySelector('#scrollToTop'),
 constructionBackgrounds = [
@@ -208,12 +30,21 @@ constructionBackgrounds = [
     "assets/img/bg-image1.png",
     "assets/img/bg-image2.png",
     "assets/img/bg-image3.png",
-];
+],
+totalSlides = document.querySelectorAll('.ourWork__column').length,
+slideWidth = document.querySelector('.ourWork__column').offsetWidth + 70,
+slidesToShow = 3;
 
 let constructionCount = constructionBackgrounds.length,
+activeColumn = null,
 constructionIndex = 0,
 workIndex = 0;
+ourWorkSlide = 0,
+touchStartX = 0,
+touchEndX = 0,
 
+/* changesConButton */
+/* Исправить */
 learnMore.addEventListener('click', changesConButton);
 submitRequest.addEventListener('click', changesConButton);
 function changesConButton() {
@@ -227,57 +58,7 @@ function changesConButton() {
     }
 };
 
-/* workButton */
-
-// prev.addEventListener('click', changesWorButton);
-// next.addEventListener('click', changesWorButton);
-// function changesWorButton() {
-//     for(let i = 0; i < changeWorButton.length; i++) {
-//         changeWorButton[i].classList.remove('ourWork__buttonAct');
-//     }
-//     if (this.className === ('ourWork__button ourWork__buttonAct')) {
-//         this.classList.remove('ourWork__buttonAct')
-//     } else {
-//         this.classList.add('ourWork__buttonAct');
-//     }
-// };
-
-// prev.addEventListener('click', prevWorkSlide);
-// next.addEventListener('click', nextWorkSlide);
-// function prevWorkSlide() {
-//     slideIndex = (--slideIndex + workSliderCount) % workSliderCount;
-//     updatePartner();
-// }
-// function nextWorkSlide() {
-//     slideIndex = (++slideIndex) % workSliderCount;
-//     updatePartner();
-// }
-
-// function updatePartner() {
-//     slides.forEach((slide, index) => {
-//     if (index === slideIndex) {
-//         slide.style.display = 'flex';
-//     } else {
-//         slide.style.display = 'none';
-//     }
-// });
-// }
-// updatePartner();
-
-
-
-
-/* sliderColumn */
-
-slides.forEach((number, index) => {
-    number.addEventListener('mouseover', () => {
-        workIndex = index;
-        updateColumn(workIndex)
-    })
-})
-
 /* construction */
-
 constructionPrev.addEventListener('click', constructionPrevBackground);
 constructionNext.addEventListener('click', nextconstructionBackgrounds);
 function constructionPrevBackground() {
@@ -314,7 +95,6 @@ constructionNumbers.forEach((number, index) => {
 })
 updateNumber();
 updateBackground();
-
 function updateColumn(index) {
     workButtons.forEach(button => {
         button.classList.remove('ourWork__column-buttonAct')
@@ -385,6 +165,106 @@ function videoChangeTime(e) {
     videoPlayer.currentTime = videoPlayer.duration * (progress / 100);
 }
 
+/* Out work */
+const valueToWorkButton = {
+    'buttonAct': 'ourWork__buttonAct',
+    'buttNotAct': 'ourWork__button'
+}
+workButtonPrev.addEventListener('click', function() {
+    workButtonPrev.className = ''; // очищаем все классы
+    workButtonPrev.classList.add(valueToWorkButton['buttonAct']);
+    workButtonNext.classList.remove(valueToWorkButton['buttonAct']);
+    workButtonNext.classList.add(valueToWorkButton['buttNotAct']);
+
+    if (ourWorkSlide > 0) {
+        ourWorkSlide--;
+    } else {
+        ourWorkSlide = totalSlides - slidesToShow;
+    }
+    updateSlider();
+});
+workButtonNext.addEventListener('click', function() {
+    workButtonNext.className = ''; // очищаем все классы
+    workButtonNext.classList.add(valueToWorkButton['buttonAct']);
+    workButtonPrev.classList.remove(valueToWorkButton['buttonAct']);
+    workButtonPrev.classList.add(valueToWorkButton['buttNotAct']);
+
+    if (ourWorkSlide < totalSlides - slidesToShow) {
+        ourWorkSlide++;
+    } else {
+        ourWorkSlide = 0;
+    }
+    updateSlider();
+});
+slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+slider.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+function prevSlide() {
+    if (ourWorkSlide > 0) {
+        ourWorkSlide--;
+    } else {
+        ourWorkSlide = totalSlides - slidesToShow;
+    }
+    updateSlider();
+}
+function nextSlide() {
+    if (ourWorkSlide < totalSlides - slidesToShow) {
+        ourWorkSlide++;
+    } else {
+        ourWorkSlide = 0;
+    }
+    updateSlider();
+}
+function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+        nextSlide();
+    }
+    if (touchEndX > touchStartX + 50) {
+        prevSlide();
+    }
+}
+function updateSlider() {
+    const offset = -ourWorkSlide * slideWidth;
+    slider.style.transform = `translateX(${offset}px)`;
+}
+updateSlider();
+
+
+workColumns.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        if (!activeColumn || activeColumn !== card) {
+            card.querySelector('.ourWork__column-button').style.display = 'block';
+        }
+    });
+    card.addEventListener('mouseleave', () => {
+        if (!activeColumn || activeColumn !== card) {
+            card.querySelector('.ourWork__column-button').style.display = 'none';
+        }
+    });
+    card.addEventListener('click', () => {
+        if (activeColumn && activeColumn !== card) {
+            activeColumn.classList.remove('active');
+            activeColumn.querySelector('.ourWork__column-button').style.display = 'none';
+        }
+        card.classList.add('ourWork__column-buttonActive');
+        activeColumn = card;
+    });
+});
+document.body.addEventListener('click', (event) => {
+    if (!event.target.closest('.ourWork__column')) {
+        if (activeColumn) {
+            activeColumn.classList.remove('ourWork__column-buttonActive');
+            activeColumn.querySelector('.ourWork__column-button').style.display = 'none';
+            activeColumn = null;
+        }
+    }
+});
+
+/* Go to Top */
 scrollToTop.addEventListener('click', goToTop);
 function goToTop() {
     window.scrollTo({

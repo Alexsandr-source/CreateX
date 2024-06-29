@@ -527,6 +527,8 @@
   background-color: var(--accent-color);
 }
 .ourWork__buttonAct {
+  padding: 12px;
+  border-radius: 100%;
   background-color: var(--white-color);
 }
 .ourWork__buttonAct .ourWork__arrow path {
@@ -554,7 +556,7 @@
 }
 .ourWork__slider-track {
   display: flex;
-  gap: 5vmax;
+  gap: 70px;
   transition: transform 0.5s ease;
 }
 .ourWork__column {
