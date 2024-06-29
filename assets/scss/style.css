@@ -3,11 +3,15 @@
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 .navbar__logo {
   display: flex;
   gap: 3px;
+}
+.navbar__logo img {
+  height: 20px;
 }
 @media only screen and (max-width: 1920px) {
   .navbar__logo {

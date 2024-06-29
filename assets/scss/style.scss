@@ -2,10 +2,14 @@
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
+    align-items: center;
     justify-content: center;
     &__logo {
         display: flex;
         gap: 3px;
+        & img {
+            height: 20px;
+        }
         @media only screen and (max-width: 1920px) {
             margin-right: 60px;
         }
